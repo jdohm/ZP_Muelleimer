@@ -19,7 +19,6 @@
 
 2.  Installation der ESP8266Wifi Bibliothek: https://github.com/ekstrand/ESP8266wifi Hier gibt es auch eine (englische) Anleitung zur Installation.
 
-
 3. Zur Steuerung der LED-Streifen fehlt uns jetzt noch eine passende Bibliothek dazu, hier installieren wir die folgende: [github.com Neopixel](https://github.com/adafruit/Adafruit_NeoPixel) Bibliothek. Auch hier gibt es eine (englische) Anleitung. Unter "first method" gibt es keine einfache und schnelle Installationsanleitung.
 
 ## Zum Hardware Aufbau
@@ -30,11 +29,16 @@ Unter: [carontepass.files.wordpress.com](https://carontepass.files.wordpress.com
 Der Mülleimer besteht aus einem 3D-Druck.
 Hierzu gibt es zwei Varianten, die "simple" für Einsteiger und die "advanced" für Fortgeschrittene. 
 
-1. Zur Erstellung des unteren 3D-Modells könnt ihr der Anleitung im Ordner simple/advanced folgen. In beiden Ordnern befinden sich auch Beispielhaft fertige Datein. Das Ergebnis muss als *.stl exportiert werden, damit dieses später weiterverarbeitet werden kann. Speichert euch auch die Datei ab, falls ihr diese später noch einmal ändern wollt. *Hinweis* Das Modell darf innen gefüllt sein, da wir das später beim Drucken ändern.
+1. Zur Erstellung des unteren 3D-Modells könnt ihr der Anleitung im Ordner 3D-Parts/bottom_simple oder 3D-Parts/bottom_advanced folgen. In beiden Ordnern befinden sich auch Beispielhaft fertige Datein. Das Ergebnis muss als *.stl exportiert werden, damit dieses später weiterverarbeitet werden kann. Speichert euch auch die Datei ab, falls ihr diese später noch einmal ändern wollt. *Hinweis* Das Modell darf innen gefüllt sein, da wir das später beim Drucken ändern.
 
-2. Jetzt benötigen wir noch einen Deckel für unsere Tonne. 
+2. Jetzt benötigen wir noch einen Deckel für unsere Tonne. Dazu findet sich ebenfalls unter 3D-Parts eine einfache Anleitung. Gerne könnt ihr natürlich auch euren eigenen Deckel kreieren. Achtet nur darauf das er auf unsere Tonne passt, und das wir den Deckel nicht im *Vasemode* Drucken. Deswegen sollten wir ihn nicht gefüllt konstruieren.
 
 3. 3D-Drucken
+
+    Bei dem Druck der Tonne und des Deckels brauchen wir unterschiedliche Einstellungen. Fangen wir mit der Tonne an. 
+    Um eine möglichst durchscheinende Tonne zu bekommen nutzen wir nur eine Außenwand. Hier nutzen wir den *Vase mode* bei Cura heißt die Einstellung hierfür *spiralize outer contour*. Dazu nutzen wir bei einer Standard 0.4mm Düse eine *line width* von 0.48mm um unsere Tonne etwas stabiler zu gestalten. Es bietet sich an 3 *bottom layer* und eine *layer height* von 0.2-0.3mm einzustellen.
+
+    Der einfache Deckel kann mit den Standardeinstellungen deines Druckers gedruckt werden. Eine *line width* von 0.48mm ist dabei Hilfreich aber nicht notwendig.
 
 4. Anlöten der LED-Streifen
 
