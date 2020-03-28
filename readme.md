@@ -17,7 +17,15 @@
 
 1.   Installation des ESP8266 Moduls für Arduino https://github.com/esp8266/Arduino hier haben wir die "Installing with Boards Manager" Option gewählt. Nicht vergessend anschließend als Board den Wemos D1 R2&Mini auswählen
 
-2.  Installation der ESP8266Wifi Bibliothek: https://github.com/ekstrand/ESP8266wifi Hier gibt es auch eine (englische) Anleitung zur Installation.
+2.  Installation der ESP8266Wifi Bibliothek: https://github.com/ekstrand/ESP8266wifi Hier gibt es auch eine (englische) Anleitung zur Installation. Es ist eine andere eingebaut?
+https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/readme.html
+https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/client-examples.html
+https (Remscheid)
+https://buger.dread.cz/simple-esp8266-https-client-without-verification-of-certificate-fingerprint.html (Remscheid)
+
+Bochum: http://arduino.esp8266.com/Arduino/versions/2.0.0/doc/filesystem.html Anleitung auch zum Upload von ICS'Datei nutzen
+time: https://simple-circuit.com/esp8266-esp-01-internet-clock-wifi/
+date: https://github.com/PaulStoffregen/Time
 
 3. Zur Steuerung der LED-Streifen fehlt uns jetzt noch eine passende Bibliothek dazu, hier installieren wir die folgende: [github.com Neopixel](https://github.com/adafruit/Adafruit_NeoPixel) Bibliothek. Auch hier gibt es eine (englische) Anleitung. Unter "first method" gibt es keine einfache und schnelle Installationsanleitung.
 
