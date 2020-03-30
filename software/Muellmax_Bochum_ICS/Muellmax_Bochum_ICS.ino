@@ -24,6 +24,8 @@ WiFiUDP ntpUDP;
 // additionaly you can specify the update interval (in milliseconds).
 NTPClient timeClient(ntpUDP, "pool.ntp.org", 3600, 60000);
 
+#define DayInSeconds 86400
+
 ICSParser  ICSParsery("bochum.ics");
 
 void setup() {
@@ -59,7 +61,7 @@ void loop()
   int blue;
   pixels.clear();
   timeClient.update();
-  setTime(timeClient.getEpochTime());
+  setTime(timeClient.getEpochTime()+DayInSeconds);
   Serial.print("date: ");
   Serial.print(day());
   Serial.print(".");
@@ -69,17 +71,17 @@ void loop()
   Serial.print("Time: ");
   Serial.println(timeClient.getFormattedTime());
 
-  if(ICSParsery.CheckDate("Grau", day()+1,month(),year())){
+  if(ICSParsery.CheckDate("Grau", day(),month(),year())){
     Serial.println("Heute Graue Tonne!");
     pixels.setPixelColor(2, pixels.Color(15, 15, 15));
     pixels.setPixelColor(3, pixels.Color(15, 15, 15));
   }
-  if(ICSParsery.CheckDate("Gelb", day()+1,month(),year())){
+  if(ICSParsery.CheckDate("Gelb", day(),month(),year())){
     Serial.println("Heute Gelb Tonne!");
     pixels.setPixelColor(1, pixels.Color(50, 25, 0));
     pixels.setPixelColor(4, pixels.Color(50, 25, 0));
   }
-  if(ICSParsery.CheckDate("Blau", day()+1,month(),year())){
+  if(ICSParsery.CheckDate("Blau", day(),month(),year())){
     Serial.println("Heute Blau Tonne!");
     pixels.setPixelColor(0, pixels.Color(0, 0, 50));
     pixels.setPixelColor(5, pixels.Color(0, 0, 50));
