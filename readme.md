@@ -17,21 +17,34 @@
 
 1.   Installation des ESP8266 Moduls für Arduino https://github.com/esp8266/Arduino hier haben wir die "Installing with Boards Manager" Option gewählt. Nicht vergessend anschließend als Board den Wemos D1 R2&Mini auswählen
 
-2.  Installation der ESP8266Wifi Bibliothek: https://github.com/ekstrand/ESP8266wifi Hier gibt es auch eine (englische) Anleitung zur Installation. Es ist eine andere eingebaut?
-https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/readme.html
-https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/client-examples.html
-https (Remscheid)
-https://buger.dread.cz/simple-esp8266-https-client-without-verification-of-certificate-fingerprint.html (Remscheid)
+2.  Aus dem gleichen Set nutzen wir auch die ```ESP2866Wifi.h``` Library. Eine (englisches) Handbuch dazu findet sich hier:
+[arduino-esp8266.readthedocs.io](https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/readme.html)
+hier gibt es auch ein [Beispiel Wifi Cleint](https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/client-examples.html), bei dem ein Client aufgesetzt wird.
 
-Bochum: http://arduino.esp8266.com/Arduino/versions/2.0.0/doc/filesystem.html Anleitung auch zum Upload von ICS'Datei nutzen
-time: https://simple-circuit.com/esp8266-esp-01-internet-clock-wifi/
-date: https://github.com/PaulStoffregen/Time
+    Um die aktuelle Zeit und das Dazum zu kennen nutzen wir die Uhrzeit aus dem Internet. Dazu kann die folgende Anleitung genutzt werden: [simple-circuit.com](https://simple-circuit.com/esp8266-esp-01-internet-clock-wifi/). Hier wird erklärt wie wir eine Uhrzeit über NTP beziehen können. 
+    Anschließend kann mit der Time Bibliothek die Linux-Uhrzeit in ein Datum umgerechnet werden. Die Informationen dazu finden wir hier: [github.com Time](https://github.com/PaulStoffregen/Time)
 
-3. Zur Steuerung der LED-Streifen fehlt uns jetzt noch eine passende Bibliothek dazu, hier installieren wir die folgende: [github.com Neopixel](https://github.com/adafruit/Adafruit_NeoPixel) Bibliothek. Auch hier gibt es eine (englische) Anleitung. Unter "first method" gibt es keine einfache und schnelle Installationsanleitung.
+    * ICal (*.ics Datei) Version:
+
+        Diese Version nutzt ICal Datein, einige Städte bieten diese zum Download für ihre Bürger an. Beispielsweise in Bochum oder Wuppertal.
+
+        Um die Daten aus der Kalender Datei zu verwenden müssen wir den Kalender erst einmal auf unseren ESP bekommen. Dazu nutzen wir das ESP8266 Filesystem. Eine Anleitung dazu finden wir hier: [ESP Filesystem](http://arduino.esp8266.com/Arduino/versions/2.0.0/doc/filesystem.html) In dieser Anleitung wird auch erkärt, wie wir Daten von der Arduino Programmierumgebung (IDE) auf den ESP Laden.
+        Hierbei muss darauf geachtet werden, die neuste Version zu nutzen, *nicht* die im Artikel verlinkte.
+
+        Anschließend kann mit der [Github ICSParser](https://github.com/jdohm/ICSParser) Bibliothek der Kalender ausgelesen werden. 
+
+    * Für andere Städte (Beispielsweise Remscheid) gestaltet sich das ganze etwas schwieriger. 
+    
+        Bei dem leichteren Fällen, kann die Information über http unverschlüsselt abgerufen werden. 
+        Dazu haben wir bereits alle Infos im dem [Beispiel Wifi Cleint](https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/client-examples.html)
+
+        In den schwierigeren Fällen (wie auch in Remscheid) müssen wir die Information über eine verschlüsselte https Verbindung abfragen.
+
+        Hier der aktuelle Ansatz die Website über https aufzurufen, basiert auf der folgenden Anleitung: [buger.dread.cz](https://buger.dread.cz/simple-esp8266-https-client-without-verification-of-certificate-fingerprint.html) 
+
+3. Zur Steuerung der LED-Streifen fehlt uns jetzt noch eine passende Bibliothek, hier installieren wir die [github.com Neopixel](https://github.com/adafruit/Adafruit_NeoPixel) Bibliothek. Auch hier gibt es eine (englische) Anleitung. Unter "first method" gibt es eine einfache und schnelle Installationsanleitung.
 
 ## Zum Hardware Aufbau
-
-Unter: [carontepass.files.wordpress.com](https://carontepass.files.wordpress.com/2016/03/wemos-d1-mini.jpg?w=1200) finden wir einen Bild mit dem Pinout des wemos D1 mini 
 
 ### Aufbau des Mülleimers
 Der Mülleimer besteht aus einem 3D-Druck.
@@ -49,6 +62,8 @@ Hierzu gibt es zwei Varianten, die "simple" für Einsteiger und die "advanced" f
     Der einfache Deckel kann mit den Standardeinstellungen deines Druckers gedruckt werden. Eine *line width* von 0.48mm ist dabei Hilfreich aber nicht notwendig.
 
 4. Anlöten der LED-Streifen
+
+    Unter: [carontepass.files.wordpress.com](https://carontepass.files.wordpress.com/2016/03/wemos-d1-mini.jpg?w=1200) finden wir einen Bild mit dem Pinout des wemos D1 mini 
 
     Leider entpricht die Reihenfolge des LED-Streifens nicht der unseres Microkontrollers. Aus diesem Grund müssen wir mit ein paar kurzen Leitungen nachhelfen. Auch sollten wir nicht den Pin D4 nutzen, da dieser mit der internen blauen LED Verbunden ist.
     Wie hier in der Abbildung zu sehen wird die Seite des LED-Streifens auf der **Din** steht mit der Seite des Microkontrollers verbunden auf der sich die USB-Buchse befindet.
