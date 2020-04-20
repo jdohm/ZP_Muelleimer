@@ -40,7 +40,7 @@ hier gibt es auch ein [Beispiel Wifi Cleint](https://arduino-esp8266.readthedocs
 
         In den schwierigeren Fällen (wie auch in Remscheid) müssen wir die Information über eine verschlüsselte https Verbindung abfragen.
 
-        Hier der aktuelle Ansatz die Website über https aufzurufen, basiert auf der folgenden Anleitung: [buger.dread.cz](https://buger.dread.cz/simple-esp8266-https-client-without-verification-of-certificate-fingerprint.html) 
+        Dazu nutzen wir die Bibliothek [Github RemscheidMuellParser](https://github.com/jdohm/RemscheidMuellParser) mit welcher wir (aktuell noch nicht für die gelbe Tonne) von einem Webserver abfragen ob der Müll rausgestellt werden muss.
 
 3. Zur Steuerung der LED-Streifen fehlt uns jetzt noch eine passende Bibliothek, hier installieren wir die [github.com Neopixel](https://github.com/adafruit/Adafruit_NeoPixel) Bibliothek. Auch hier gibt es eine (englische) Anleitung. Unter "first method" gibt es eine einfache und schnelle Installationsanleitung.
 
