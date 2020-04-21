@@ -1,5 +1,5 @@
 # Mülleimer Projekt der Zukunftspiloten aus dem Bergischen Land
-
+![GIF blaue Mülltonne](/pictures/blaue_tonne.gif "Abbildung vom Lötvorgang")
 ## Zur Hardware:
 
 | Anzahl | Bezeichnung                  |
