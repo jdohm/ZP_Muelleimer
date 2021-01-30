@@ -61,7 +61,7 @@ void loop()
   int blue;
   pixels.clear();
   timeClient.update();
-  setTime(timeClient.getEpochTime()+2*DayInSeconds);
+  setTime(timeClient.getEpochTime()+DayInSeconds);
   Serial.print("date: ");
   Serial.print(day());
   Serial.print(".");
@@ -70,34 +70,49 @@ void loop()
   Serial.println(year());
   Serial.print("Time: ");
   Serial.println(timeClient.getFormattedTime());
-
-  if(RMP.CheckDate("Restabfall", day(),month(),year())){
-    Serial.println("Heute Graue Tonne!");
-    pixels.setPixelColor(2, pixels.Color(15, 15, 15));
-    pixels.setPixelColor(3, pixels.Color(15, 15, 15));
-  }
-  if(RMP.CheckDate("Bioabfall", day(),month(),year())){
-    Serial.println("Heute Gelb Tonne!");
-    pixels.setPixelColor(1, pixels.Color(50, 25, 0));
-    pixels.setPixelColor(4, pixels.Color(50, 25, 0));
-  }
-  if(RMP.CheckDate("Papierabfall", day(),month(),year())){
-    Serial.println("Heute Blau Tonne!");
-    pixels.setPixelColor(0, pixels.Color(0, 0, 50));
-    pixels.setPixelColor(5, pixels.Color(0, 0, 50));
-    blue = 50;
-  }
-  else blue = 0;
-  for(int a=0; a<50;a++){
-    for(int i=0; i <15;i++){
-      pixels.setPixelColor(5, pixels.Color(i, 0, blue));
-      delay(70);
-      pixels.show();
+  if(year()>1971){
+    if(RMP.CheckDate("Restabfall", day(),month(),year())){
+      Serial.println("Heute Graue Tonne!");
+      pixels.setPixelColor(2, pixels.Color(15, 15, 15));
+      pixels.setPixelColor(3, pixels.Color(15, 15, 15));
     }
-    for(int i=0; i <15;i++){
-      pixels.setPixelColor(5, pixels.Color(14-i, 0, blue));
-      delay(70);
-      pixels.show();
+    if(RMP.CheckDate("Bioabfall", day(),month(),year())){
+      Serial.println("Heute Gelb Tonne!");
+      pixels.setPixelColor(1, pixels.Color(50, 25, 0));
+      pixels.setPixelColor(4, pixels.Color(50, 25, 0));
+    }
+    if(RMP.CheckDate("Papierabfall", day(),month(),year())){
+      Serial.println("Heute Blau Tonne!");
+      pixels.setPixelColor(0, pixels.Color(0, 0, 50));
+      pixels.setPixelColor(5, pixels.Color(0, 0, 50));
+      blue = 50;
+    }
+    else blue = 0;
+    for(int a=0; a<50;a++){
+      for(int i=0; i <15;i++){
+        pixels.setPixelColor(5, pixels.Color(0, i, blue));
+        delay(70);
+        pixels.show();
+      }
+      for(int i=0; i <15;i++){
+        pixels.setPixelColor(5, pixels.Color(0, 14-i, blue));
+        delay(70);
+        pixels.show();
+      }
+    }
+  }
+  else{
+        for(int a=0; a<50;a++){
+      for(int i=0; i <15;i++){
+        pixels.setPixelColor(5, pixels.Color(i, 0, blue));
+        delay(70);
+        pixels.show();
+      }
+      for(int i=0; i <15;i++){
+        pixels.setPixelColor(5, pixels.Color(14-i, 0, blue));
+        delay(70);
+        pixels.show();
+      }
     }
   }
   
