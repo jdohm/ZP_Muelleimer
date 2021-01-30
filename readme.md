@@ -17,7 +17,7 @@
 
 1.   Installation des ESP8266 Moduls für Arduino https://github.com/esp8266/Arduino hier haben wir die "Installing with Boards Manager" Option gewählt. Nicht vergessend anschließend als Board den Wemos D1 R2&Mini auswählen
 
-2.  Aus dem gleichen Set nutzen wir auch die ```ESP2866Wifi.h``` Library. Eine (englisches) Handbuch dazu findet sich hier:
+2.  Aus dem gleichen Set nutzen wir auch die ```ESP8266Wifi.h``` Library. Eine (englisches) Handbuch dazu findet sich hier:
 [arduino-esp8266.readthedocs.io](https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/readme.html)
 hier gibt es auch ein [Beispiel Wifi Cleint](https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/client-examples.html), bei dem ein Client aufgesetzt wird.
 
