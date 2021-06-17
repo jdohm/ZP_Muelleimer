@@ -13,37 +13,6 @@
 *wir nutzen ca 10 cm LED-Streifen (vom Typ WS2812b, mit 60 LED/Metern, also 6 LED pro Streifen. Dieser lässt sich mit 5 V unseres Boards betreiben. In der mitte geknickt passt er gut in unseren Mülleimer und zeigt so 3 LED zu jeder Seite.)
 
 
-## Zur Programmierung:
-
-1.   Installation des ESP8266 Moduls für Arduino https://github.com/esp8266/Arduino hier haben wir die "Installing with Boards Manager" Option gewählt. Nicht vergessend anschließend als Board den Wemos D1 R2&Mini auswählen
-
-2.  Aus dem gleichen Set nutzen wir auch die ```ESP8266Wifi.h``` Library. Eine (englisches) Handbuch dazu findet sich hier:
-[arduino-esp8266.readthedocs.io](https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/readme.html)
-hier gibt es auch ein [Beispiel Wifi Cleint](https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/client-examples.html), bei dem ein Client aufgesetzt wird.
-
-    Um die aktuelle Zeit und das Dazum zu kennen nutzen wir die Uhrzeit aus dem Internet. Dazu kann die folgende Anleitung genutzt werden: [simple-circuit.com](https://simple-circuit.com/esp8266-esp-01-internet-clock-wifi/). Hier wird erklärt wie wir eine Uhrzeit über NTP beziehen können. 
-    Anschließend kann mit der Time Bibliothek die Linux-Uhrzeit in ein Datum umgerechnet werden. Die Informationen dazu finden wir hier: [github.com Time](https://github.com/PaulStoffregen/Time)
-
-    * ICal (*.ics Datei) Version:
-
-        Diese Version nutzt ICal Datein, einige Städte bieten diese zum Download für ihre Bürger an. Beispielsweise in Bochum oder Wuppertal.
-
-        Um die Daten aus der Kalender Datei zu verwenden müssen wir den Kalender erst einmal auf unseren ESP bekommen. Dazu nutzen wir das ESP8266 Filesystem. Eine Anleitung dazu finden wir hier: [ESP Filesystem](http://arduino.esp8266.com/Arduino/versions/2.0.0/doc/filesystem.html) In dieser Anleitung wird auch erkärt, wie wir Daten von der Arduino Programmierumgebung (IDE) auf den ESP Laden.
-        Hierbei muss darauf geachtet werden, die neuste Version zu nutzen, *nicht* die im Artikel verlinkte.
-
-        Anschließend kann mit der [Github ICSParser](https://github.com/jdohm/ICSParser) Bibliothek der Kalender ausgelesen werden. 
-
-    * Für andere Städte (Beispielsweise Remscheid) gestaltet sich das ganze etwas schwieriger. 
-    
-        Bei dem leichteren Fällen, kann die Information über http unverschlüsselt abgerufen werden. 
-        Dazu haben wir bereits alle Infos im dem [Beispiel Wifi Cleint](https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/client-examples.html)
-
-        In den schwierigeren Fällen (wie auch in Remscheid) müssen wir die Information über eine verschlüsselte https Verbindung abfragen.
-
-        Dazu nutzen wir die Bibliothek [Github RemscheidMuellParser](https://github.com/jdohm/RemscheidMuellParser) mit welcher wir (aktuell noch nicht für die gelbe Tonne) von einem Webserver abfragen ob der Müll rausgestellt werden muss.
-
-3. Zur Steuerung der LED-Streifen fehlt uns jetzt noch eine passende Bibliothek, hier installieren wir die [github.com Neopixel](https://github.com/adafruit/Adafruit_NeoPixel) Bibliothek. Auch hier gibt es eine (englische) Anleitung. Unter "first method" gibt es eine einfache und schnelle Installationsanleitung.
-
 ## Zum Hardware Aufbau
 
 ### Aufbau des Mülleimers
@@ -88,3 +57,35 @@ Hierzu gibt es zwei Varianten, die "simple" für Einsteiger und die "advanced" f
     ![Abbildung von Mülleimer und Seitenschneider](/3D-Parts/bottom_advanced/cutting.jpg "Abbildung von Mülleimer und Seitenschneider")
 
     Anschließend kann der Deckel einfach aufgesetzt werden.
+
+
+## Zur Programmierung:
+
+1.   Installation des ESP8266 Moduls für Arduino https://github.com/esp8266/Arduino hier haben wir die "Installing with Boards Manager" Option gewählt. Nicht vergessend anschließend als Board den Wemos D1 R2&Mini auswählen
+
+2.  Aus dem gleichen Set nutzen wir auch die ```ESP8266Wifi.h``` Library. Eine (englisches) Handbuch dazu findet sich hier:
+[arduino-esp8266.readthedocs.io](https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/readme.html)
+hier gibt es auch ein [Beispiel Wifi Cleint](https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/client-examples.html), bei dem ein Client aufgesetzt wird.
+
+    Um die aktuelle Zeit und das Dazum zu kennen nutzen wir die Uhrzeit aus dem Internet. Dazu kann die folgende Anleitung genutzt werden: [simple-circuit.com](https://simple-circuit.com/esp8266-esp-01-internet-clock-wifi/). Hier wird erklärt wie wir eine Uhrzeit über NTP beziehen können. 
+    Anschließend kann mit der Time Bibliothek die Linux-Uhrzeit in ein Datum umgerechnet werden. Die Informationen dazu finden wir hier: [github.com Time](https://github.com/PaulStoffregen/Time)
+
+    * ICal (*.ics Datei) Version:
+
+        Diese Version nutzt ICal Datein, einige Städte bieten diese zum Download für ihre Bürger an. Beispielsweise in Bochum oder Wuppertal.
+
+        Um die Daten aus der Kalender Datei zu verwenden müssen wir den Kalender erst einmal auf unseren ESP bekommen. Dazu nutzen wir das ESP8266 Filesystem. Eine Anleitung dazu finden wir hier: [ESP Filesystem](http://arduino.esp8266.com/Arduino/versions/2.0.0/doc/filesystem.html) In dieser Anleitung wird auch erkärt, wie wir Daten von der Arduino Programmierumgebung (IDE) auf den ESP Laden.
+        Hierbei muss darauf geachtet werden, die neuste Version zu nutzen, *nicht* die im Artikel verlinkte.
+
+        Anschließend kann mit der [Github ICSParser](https://github.com/jdohm/ICSParser) Bibliothek der Kalender ausgelesen werden. 
+
+    * Für andere Städte (Beispielsweise Remscheid) gestaltet sich das ganze etwas schwieriger. 
+    
+        Bei dem leichteren Fällen, kann die Information über http unverschlüsselt abgerufen werden. 
+        Dazu haben wir bereits alle Infos im dem [Beispiel Wifi Cleint](https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/client-examples.html)
+
+        In den schwierigeren Fällen (wie auch in Remscheid) müssen wir die Information über eine verschlüsselte https Verbindung abfragen.
+
+        Dazu nutzen wir die Bibliothek [Github RemscheidMuellParser](https://github.com/jdohm/RemscheidMuellParser) mit welcher wir (aktuell noch nicht für die gelbe Tonne) von einem Webserver abfragen ob der Müll rausgestellt werden muss.
+
+3. Zur Steuerung der LED-Streifen fehlt uns jetzt noch eine passende Bibliothek, hier installieren wir die [github.com Neopixel](https://github.com/adafruit/Adafruit_NeoPixel) Bibliothek. Auch hier gibt es eine (englische) Anleitung. Unter "first method" gibt es eine einfache und schnelle Installationsanleitung.
