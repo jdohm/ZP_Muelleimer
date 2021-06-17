@@ -61,6 +61,8 @@ Hierzu gibt es zwei Varianten, die "simple" für Einsteiger und die "advanced" f
 
 ## Zur Programmierung:
 
+### Beschaffen und Installieren aller benötigten Bibliotheken
+
 1.   Installation des ESP8266 Moduls für Arduino https://github.com/esp8266/Arduino hier haben wir die "Installing with Boards Manager" Option gewählt. Nicht vergessend anschließend als Board den Wemos D1 R2&Mini auswählen
 
 2.  Aus dem gleichen Set nutzen wir auch die ```ESP8266Wifi.h``` Library. Eine (englisches) Handbuch dazu findet sich hier:
@@ -86,6 +88,46 @@ hier gibt es auch ein [Beispiel Wifi Cleint](https://arduino-esp8266.readthedocs
 
         In den schwierigeren Fällen (wie auch in Remscheid) müssen wir die Information über eine verschlüsselte https Verbindung abfragen.
 
-        Dazu nutzen wir die Bibliothek [Github RemscheidMuellParser](https://github.com/jdohm/RemscheidMuellParser) mit welcher wir (aktuell noch nicht für die gelbe Tonne) von einem Webserver abfragen ob der Müll rausgestellt werden muss.
+        Dazu stelle ich eine Passende Bibliothek zur Verfügung. Für Remscheid gibt es Beispielsweise die Bibliothek [Github RemscheidMuellParser](https://github.com/jdohm/RemscheidMuellParser) mit welcher wir (aktuell noch nicht für die gelbe Tonne) von einem Webserver abfragen ob der Müll rausgestellt werden muss.
 
 3. Zur Steuerung der LED-Streifen fehlt uns jetzt noch eine passende Bibliothek, hier installieren wir die [github.com Neopixel](https://github.com/adafruit/Adafruit_NeoPixel) Bibliothek. Auch hier gibt es eine (englische) Anleitung. Unter "first method" gibt es eine einfache und schnelle Installationsanleitung.
+
+Sind diese Grundlagen geschaffen geht es an die Programmierung. 
+
+### LED Ansteuerung
+
+Um die LED anzusteuern benötigen wir die NeoPixel Bibliothek von Adafruit.
+Diese können wir mittels ```#include <Adafruit_NeoPixel.h>``` einbinden.
+
+Im nächsten Schritt stellen wir ein wie viele LED wir haben und an welchem Pin diese angeschlossen sind. Dazu nutzen wir die Adafruit_NeoPixel funktion.
+
+
+```Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);```
+
+In dieser Funktion können wir bei NUMPIXELS einstellen wie viele LED unser LED-Streifen hat und bei PIN stellen wir ein an welchem Pin wir die LED-Datenleitung angeschlossen haben.
+(Wenn du dich an die Hardware Anleitung gehalten hast, oder ein fertiges Kit erhalten hast, ist NUMPIXELS = 6 und PIN = 4.)
+
+Im ```setup()``` können wir jetzt mittels ```pixels.begin()``` die NeoPixel Bibliothek starten.
+
+Ist dies geschehen können wir auch schon im ```loop()``` mittels ```pixels.clear();``` alle pixel löschen oder mit ```pixels.setPixelColor(PixelNummer, pixels.Color(Rot, Grün, Blau));``` pixel setzen. Bei der Setzenfunktion müssen wir dabei für PixelNummer die Nummer des Pixels einstellen, welchen wir verändern wollen. Die Farben Rot, Grün und Blau werden mit Zahlenwerten von 0 bis 255 angegeben. Da die LED relativ hell sind, ist es am besten mit Werten unter 50 zu starten.
+
+### Serial.print
+ TODO 
+### WiFi
+ TODO 
+### Time/NTPClient
+ TODO 
+### Müllabfrage
+#### ICSParser - Alle Städte welche einen ICal Kalender mit den Müllterminen zur Verfügung stellen.
+ Ist wie unter Installieren aller benötigten Bibliotheken beschrieben, der ICal Calender bereits auf dem WemosD1 vorhanden, können wir mit folgenden Befehlen den Müll abfragen.
+ 
+ ```#include <ICSParser.h>``` bindet die Bibliothek zum Auslesen der Kalenderdatei ein.
+ 
+ ```ICSParser  ICSParsery("Dateiname.ics");``` teilt dem Wemos mit, wie die Datei heißt, welche den Kalender beinhaltet.
+ 
+ 
+  ```if(ICSParsery.CheckDate("Grau", day(),month(),year()))``` Fragt ab ob das Wort "Grau" am gegebenen Datum vorkommt. Die Worte können dabei an die im Kalender vorhandenen Stichworte angepasst werden.
+  
+#### Andere Städte
+ Müssen in die Beschreibung der speziellen Bibliothek schauen (wenn Vorhanden), Fragen oder selbst aktiv werden.
+

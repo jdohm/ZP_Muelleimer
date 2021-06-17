@@ -22,14 +22,13 @@ void VelbertMuellParser::SetStreet(String Street){//Enter your Streetname
 //  return 0;
 }
 
-        
 bool VelbertMuellParser::CheckDate(char* SearchFor, int day, int month, int year){
     std::unique_ptr<BearSSL::WiFiClientSecure>client(new BearSSL::WiFiClientSecure);
     client->setInsecure();
     HTTPClient https;
-    
+
     String postData = "tx_tbvabfall_strassensuche%5B__referrer%5D%5B%40extension%5D=Tbvabfall&tx_tbvabfall_strassensuche%5B__referrer%5D%5B%40vendor%5D=EveryConsult&tx_tbvabfall_strassensuche%5B__referrer%5D%5B%40controller%5D=Abfalldaten&tx_tbvabfall_strassensuche%5B__referrer%5D%5B%40action%5D=list&tx_tbvabfall_strassensuche%5B__referrer%5D%5Barguments%5D=YTo0OntzOjY6ImFjdGlvbiI7czo0OiJsaXN0IjtzOjEwOiJjb250cm9sbGVyIjtzOjExOiJBYmZhbGxkYXRlbiI7czoxMToiYWJnZXNjaGlja3QiO3M6MToiMSI7czoxMToic3VjaGJlZ3JpZmYiO3M6MTI6IkhhdXB0c3RyYcOfZSI7fQ%3D%3Dd6c50c9284915c804ecfe2866784057e0ee2985c&tx_tbvabfall_strassensuche%5B__referrer%5D%5B%40request%5D=a%3A4%3A%7Bs%3A10%3A%22%40extension%22%3Bs%3A9%3A%22Tbvabfall%22%3Bs%3A11%3A%22%40controller%22%3Bs%3A11%3A%22Abfalldaten%22%3Bs%3A7%3A%22%40action%22%3Bs%3A4%3A%22list%22%3Bs%3A7%3A%22%40vendor%22%3Bs%3A12%3A%22EveryConsult%22%3B%7D1b4dce7c057e7503073a6937f97eee8e8b7650e3&tx_tbvabfall_strassensuche%5B__trustedProperties%5D=a%3A2%3A%7Bs%3A11%3A%22abgeschickt%22%3Bi%3A1%3Bs%3A11%3A%22suchbegriff%22%3Bi%3A1%3B%7Dae8a10e23f532f6ce1dd43681b3c3b0c393dedc7&tx_tbvabfall_strassensuche%5Babgeschickt%5D=1&tx_tbvabfall_strassensuche%5Bsuchbegriff%5D=" + _Street;
-    
+
 //    Serial.println("postData: ");
 //    Serial.println(postData);
   if (https.begin(*client, String(_DatabaseURL))) {  // HTTPS
