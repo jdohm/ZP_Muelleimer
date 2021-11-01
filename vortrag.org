@@ -1,0 +1,57 @@
+* Übersicht
+  
+
+  
+* Todo
+
+** TODO Anzahl der Teilnehmer
+   Beim ersten Termin muss die Anzahl der Teilnehmer erfasst werden, um später
+   Hardware an die Teilnehmer verschicken zu können. 
+
+** TODO Wohnort der Teilnehmer (für Programmierung)
+
+** TODO Bestellen der benötigten Hardware
+
+** TODO Einsammeln der Druckdatein und überprüfen auf Druckbarkeit
+
+** TODO Drucken der Teilnehmerdaten
+
+** TODO Versand der Teile (3D und Arduino)
+   
+* Vortrag
+#+OPTIONS: num:nil
+#+REVEAL_HLEVEL: 1
+#+OPTIONS: reveal_single_file:t
+#+EXPORT_FILE_NAME: ZP_Crypto_Vortrag.html
+
+* Willkommen
+ 
+* Ziel / Inhalt des Kurses
+
+** Erstellung der Hardware (4.11)
+        Thema: CAD/Technisches Zeichnen mit dem Computer
+        Ziel: Jede:r Teilnemer:in erstellt seine eigene Mülltonne mit FreeCAD (ein freies CAD Programm, was auf allen Betriebssystemen läuft)
+        Meine Planung: Das Kennenlernen, für viele eventuell etwas neues mit Zoom und ein neues Programm frisst sicher viel Zeit. Ein einfaches Beispiel, kann ich selbst in ~20 min aufbauen ohne zu hasten. Je nach Gruppengröße und auftretenden Problemen kann so etwas aber schnell lange dauern und für den Fall das wir nach kurzer Zeit fertig sind, kann man immer noch individuellere Mülleimer bauen (das wird dann schnell so kompliziert, dass man damit ganze Tage verbringen kann).
+
+        
+        Ich hoffe von allen Teilnehmer:innen nach dem ersten Block eine Datei zu haben die ich drucken kann. Wer noch selbst basteln möchte, kann mir auch noch bis zu 3 Tage später eine neue Datei schicken.
+        Ich 3-Drucke die Mülltonnen und mache die Elektronik fertig und versende das an alle Teilnehmer:innen.
+** Zusammenbau und Programmierung (25.11)
+        Thema: Programmieren des WeMos D1 (Arduino) und die Benutzung einer ersten Bibliothek.
+        Ziel: Ein Blinkender Mülleimer, bei den fitteren gern auch schon mit einer kleinen Animation oder ähnliches.
+** Hilfe, Customization, Fragen / Reserve (16.12)
+        Thema: Erweiterung und Automatisierung unserer Mülleimer
+        Ziel: Bei jede:r Teilnehmer:in leuchtet die Mülltonne automatische wenn der Müll raus muss.
+
+    2. Block - Optional - Fragen und Antworten, wenn jemand noch Probleme hat
+       oder noch selbst weiter macht.
+* Heutiges Ziel
+
+** FreeCAD Einrichten
+
+** Erstellen der Tonne (mit erklärung 1:1)
+
+** Erstellung des Basic Deckels (mit 1:1)
+
+** Möglichkeit der Personalisierung
+
