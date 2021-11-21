@@ -4,54 +4,237 @@
   
 * Todo
 
-** TODO Anzahl der Teilnehmer
+** DONE Anzahl der Teilnehmer
    Beim ersten Termin muss die Anzahl der Teilnehmer erfasst werden, um später
    Hardware an die Teilnehmer verschicken zu können. 
 
-** TODO Wohnort der Teilnehmer (für Programmierung)
+** DONE Wohnort der Teilnehmer (für Programmierung)
 
-** TODO Bestellen der benötigten Hardware
+** DONE Bestellen der benötigten Hardware
 
-** TODO Einsammeln der Druckdatein und überprüfen auf Druckbarkeit
+** DONE Einsammeln der Druckdatein und überprüfen auf Druckbarkeit
 
-** TODO Drucken der Teilnehmerdaten
+** DONE Drucken der Teilnehmerdaten
 
-** TODO Versand der Teile (3D und Arduino)
+** WIP Versand der Teile (3D und Arduino)
    
-* Vortrag
+# Vortrag start
+* Maker online Kurs I
+#+Title: Maker online Kurs I
+#+Author: Jannis Dohm
+#+Email: Dohm@posteo.net
 #+OPTIONS: num:nil
+# #+OPTIONS: toc:nil
+#+OPTIONS: toc_depth = 2,
 #+REVEAL_HLEVEL: 1
 #+OPTIONS: reveal_single_file:t
 #+EXPORT_FILE_NAME: ZP_Crypto_Vortrag.html
 
-* Willkommen
+** Herzlich Willkommen!
+   
  
-* Ziel / Inhalt des Kurses
-
-** Erstellung der Hardware (4.11)
-        Thema: CAD/Technisches Zeichnen mit dem Computer
-        Ziel: Jede:r Teilnemer:in erstellt seine eigene Mülltonne mit FreeCAD (ein freies CAD Programm, was auf allen Betriebssystemen läuft)
-        Meine Planung: Das Kennenlernen, für viele eventuell etwas neues mit Zoom und ein neues Programm frisst sicher viel Zeit. Ein einfaches Beispiel, kann ich selbst in ~20 min aufbauen ohne zu hasten. Je nach Gruppengröße und auftretenden Problemen kann so etwas aber schnell lange dauern und für den Fall das wir nach kurzer Zeit fertig sind, kann man immer noch individuellere Mülleimer bauen (das wird dann schnell so kompliziert, dass man damit ganze Tage verbringen kann).
-
-        
-        Ich hoffe von allen Teilnehmer:innen nach dem ersten Block eine Datei zu haben die ich drucken kann. Wer noch selbst basteln möchte, kann mir auch noch bis zu 3 Tage später eine neue Datei schicken.
-        Ich 3-Drucke die Mülltonnen und mache die Elektronik fertig und versende das an alle Teilnehmer:innen.
-** Zusammenbau und Programmierung (25.11)
-        Thema: Programmieren des WeMos D1 (Arduino) und die Benutzung einer ersten Bibliothek.
-        Ziel: Ein Blinkender Mülleimer, bei den fitteren gern auch schon mit einer kleinen Animation oder ähnliches.
-** Hilfe, Customization, Fragen / Reserve (16.12)
-        Thema: Erweiterung und Automatisierung unserer Mülleimer
-        Ziel: Bei jede:r Teilnehmer:in leuchtet die Mülltonne automatische wenn der Müll raus muss.
-
-    2. Block - Optional - Fragen und Antworten, wenn jemand noch Probleme hat
-       oder noch selbst weiter macht.
-* Heutiges Ziel
-
+** Ziel / Inhalt des Kurses
+- Erstellung der Hardware (4.11)
+- Zusammenbau und Programmierung (25.11)
+- Hilfe, Customization, Fragen / Reserve (16.12)
+# 
+# *** Zusammenbau und Programmierung (25.11)
+         # Thema: Programmieren des WeMos D1 (Arduino) und die Benutzung einer ersten Bibliothek.
+         # Ziel: Ein Blinkender Mülleimer, bei den fitteren gern auch schon mit einer kleinen Animation oder ähnliches.
+# *** Hilfe, Customization, Fragen / Reserve (16.12)
+         # Thema: Erweiterung und Automatisierung unserer Mülleimer
+         # Ziel: Bei jede:r Teilnehmer:in leuchtet die Mülltonne automatische wenn der Müll raus muss.
+# 
+     # 2. Block - Optional - Fragen und Antworten, wenn jemand noch Probleme hat
+        # oder noch selbst weiter macht.
+** Heutiges Ziel
+- Jeder hat FreeCAD installiert
+- Jeder hat einfaches Tonnenmodell konstruiert
+- Ich werde die Tonnen für euch drucken
+Wer will kann seine Tonne natürlich selbst auf einem 3D-Drucker drucken!
+** Bevor wir starten:
+Für den weiteren ablauf, brauche ich folgende Daten:
+- Anzahl TeilnehmerInnen
+- Wohnorte (für Versand der Hardware und vorbereitung der Software)
 ** FreeCAD Einrichten
-
-** Erstellen der Tonne (mit erklärung 1:1)
-
-** Erstellung des Basic Deckels (mit 1:1)
+   :PROPERTIES:
+   :reveal_extra_attr: data-background-iframe="https://www.freecadweb.org/"
+   :END:
+   # :reveal_background: ./vortrag/freecad.png
+   # :reveal_extra_attr: data-background-opacity="0.2"
+** Erstellen der Tonne
+   :PROPERTIES:
+   :reveal_background: ./vortrag/freecad_can.png
+   :reveal_extra_attr: data-background-opacity="0.4"
+   :END:
+   Live demo zum Mitmachen
+** Erstellung des Basic Deckels
 
 ** Möglichkeit der Personalisierung
+   Ihr habt jetzt noch etwas Zeit selbst an euren Projekten zu arbeiten! Bei fragen gerne an uns wenden.
+   Spätester Abgabezeitpunkt ist Sonntag!
+   Bitte denkt daran, ohne Datei könnt ihr nicht weiter mit machen, bei Problemen gerne bei uns melden (auch nach dem Kurs).
+
+** Kontaktdaten
+   #+BEGIN_SRC
+   Jannis Dohm - bergisches_land@zukunftspiloten.vdi.de
+   #+END_SRC
+   #+BEGIN_SRC
+   Thomas Kranz - thomas.kranz@vdi-mittelhessen.de
+   #+END_SRC
+   #+BEGIN_SRC
+   weitere Infos - https://github.com/jdohm/ZP_Muelleimer
+   #+END_SRC
+** Danke euch
+   und hoffentlich bis zum nächsten Mal :)
+
+   
+* Maker online Kurs II
+#+Title: Maker online Kurs II
+#+Author: Jannis Dohm
+#+Email: Dohm@posteo.net
+#+OPTIONS: num:nil
+# #+OPTIONS: toc:nil
+#+OPTIONS: toc_depth = 2,
+#+REVEAL_HLEVEL: 1
+#+OPTIONS: reveal_single_file:t
+#+EXPORT_FILE_NAME: ZP_Crypto_Vortrag_II.html
+
+** Ziel / Inhalt des Kurses
+- /Erstellung der Hardware (4.11)/
+- **Zusammenbau und Programmierung (25.11)**
+- Hilfe, Customization, Fragen / Reserve (16.12)
+  
+** Heutiges Ziel
+- Alle haben Arduino installiert
+- Alle können die LED's ändern und haben die Bibliotheken installiert
+# 
+# *** Zusammenbau und Programmierung (25.11)
+         # Thema: Programmieren des WeMos D1 (Arduino) und die Benutzung einer ersten Bibliothek.
+         # Ziel: Ein Blinkender Mülleimer, bei den fitteren gern auch schon mit einer kleinen Animation oder ähnliches.
+# *** Hilfe, Customization, Fragen / Reserve (16.12)
+         # Thema: Erweiterung und Automatisierung unserer Mülleimer
+         # Ziel: Bei jede:r Teilnehmer:in leuchtet die Mülltonne automatische wenn der Müll raus muss.
+# 
+     # 2. Block - Optional - Fragen und Antworten, wenn jemand noch Probleme hat
+        # oder noch selbst weiter macht.
+
+** Übersicht
+   Grafik einfügen
+
+** Arduino vorbereiten
+   :PROPERTIES:
+   :reveal_extra_attr: data-background-iframe="https://www.arduino.cc/en/software"
+   :END:
+*** ESP8266 Modul
+    Installation in Arduino https://github.com/esp8266/Arduino wir nutzen "Installing with Boards Manager" 
+*** LED Treiber
+    Um die intelligenten LED's anzusprechen benötigen wir noch die Bibliothek "Neopixel" von Adafruit.
+    Diese bekommen wir, in dem wir *Sketch* -> *Bibliotheken einbinden* -> *Bibliotheken verwalten...*
+    gehen und dort in die Suchleiste *NeoPixel strip* suchen.
+    Anschließend können wir die Bibliothek Adafruit NeoPixel installieren.
+*** ICSParser
+    Wir laden uns die Bibliothek ICSParser runter, die Thomas und ich für euch geschrieben haben.
+    Mit dieser können wir später den Kalender eurer Stadt lesen.
+    https://github.com/jdohm/ICSParser
+    Wir brauchen die Datein "ICSParser.cpp" und "ICSParser.h", die wir beide später in unseren Programordner kopieren.
+** Programmierung
+   in diesem Abschnitt beginnen wir mit der Programmierung eurer Arduinos.
+   Wir schauen wie weit wir kommen, wir haben noch einen Termin um mit allem fertig zu werden!
+
+   Wir öffnen ein neues Arduino Fenster
+*** LED Programmieren
+über *Sketch* -> *Bibliotheken einbinden* ganz nach unten scrollen und *Adafruit NeoPixel*
+   fügen wir unserem Projekt die Bibliothek zur Ansteuerung des LED-Streifens hinzu.
+   Die erste Zeile mit 
+#+ATTR_REVEAL: :code_attribs data-line-numbers='1|3'
+#+BEGIN_SRC c++
+#include <rp2040_pio.h>
+#+END_SRC
+benötigen wir nicht, diese müssen wir löschen.
+#+REVEAL: split
+unser erster Code, den wir unter:
+#+ATTR_REVEAL: :code_attribs data-line-numbers='1|3'
+#+BEGIN_SRC c++
+#include <Adafruit_NeoPixel.h>
+#+END_SRC
+schreiben.
+
+#+ATTR_REVEAL: :code_attribs data-line-numbers='1|3'
+#+BEGIN_SRC c++
+  //wir legen fest, wie viele LEDs an unserem Streifen sind
+  #define NummerLED 6 
+  //wir legen fest, an welchem Pin unsere LEDs sind
+  #define LEDPin  4 
+  //wir nutzen die NeoPixel Bibliothek und sagen ihr wie viele LEDs wir wo haben.
+  //Dazu geben wir ihr noch Infos zu den verwendeten LEDs
+  Adafruit_NeoPixel LEDStreifen(NummerLED, LEDPin, NEO_GRB + NEO_KHZ800);
+#+END_SRC
+#+REVEAL: split
+Jetzt sagen wir dem Arduino was er am start machen soll.
+Dazu schreiben wir in den Bereich *setup*, zwischen die geschweiften Klammern.
+Alle Befehle in diesem Bereich werden bei Setup, also dem Start einmal ausgeführt.
+Mit:
+#+ATTR_REVEAL: :code_attribs data-line-numbers='1|3'
+#+BEGIN_SRC c++
+  LEDStreifen.begin();
+#+END_SRC
+teilen wir ihm mit, das er am Anfang den LED Streifen aktivieren soll.
+Mit 
+#+ATTR_REVEAL: :code_attribs data-line-numbers='1|3'
+#+BEGIN_SRC c++
+  LEDStreifen.setPixelColor(1, LEDStreifen.Color(0,0,20));
+#+END_SRC
+Können wir ihm sagen, das er die erste LED blau machen soll.
+Um das ergebnis zu sehen müssen wir jetzt noch mit
+#+ATTR_REVEAL: :code_attribs data-line-numbers='1|3'
+#+BEGIN_SRC c++
+  LEDStreifen.show();
+#+END_SRC
+mitteilen, das wir den aktuellen Stand sehen möchten.
+#+REVEAL: split
+Klappt es bei allen?
+Welche LED leuchtet? Habt ihr eine Idee warum?
+*** Serial Programmieren
+Beim Programmieren schleichen sich schnell Fehler ein, die schwer zu finden sind.
+Deswegen gibt es einen Trick, wie wir uns Nachrichten vom Arduino senden lassen können.
+So wissen wir, was der Arduino als letztes getan hat oder was er nicht tut.
+#+REVEAL: split
+Dazu nutzen wir die Funktion *Serial*
+#+BEGIN_SRC c++
+  Serial.begin(115200);
+#+END_SRC
+Teilt dem Arduino mit, das er eine Verbindung mit unserem Computer aufbauen soll.
+Die *115200* ist dabei die Geschwindigkeit der Verbindung.
+Auch diesen Befehl schreiben wir in den setup Bereich, da er nur zum Start einmal ausgeführt werden soll.
+
+#+REVEAL: split
+Anschließend können wir uns mit
+#+BEGIN_SRC c++
+  Serial.print("Nachricht");
+#+END_SRC
+#+BEGIN_SRC c++
+  Serial.println("Nachricht");
+#+END_SRC
+Nachrichten schicken, die Version mit ln am Ende schickt zusätzlich zu der Nachricht, die Information,
+dass die Zeile fertig ist. Beide funktionen senden uns aber eine Nachricht.
+#+BEGIN_SRC c++
+  Serial.println("Hallo Jannis");
+#+END_SRC
+Führt dazu, das der Arduino mich jetzt immer begrüßt, wenn er startet.
+*** WiFi (W-Lan)
+Gehemeine Datei *secret.h*
+#+REVEAL: split
+verbinden... (mit Serial)
+*** NTP (Zeiten aus dem Netz)
+Zeit empfangen
+
+Umrechnen
+
+Ausgeben
+*** LittleFS
+*** ICSParser
+*** Custom
+*** Zusammenführen
+*** Danke
 

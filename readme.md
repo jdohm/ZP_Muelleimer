@@ -62,6 +62,7 @@ Hierzu gibt es zwei Varianten, die "simple" für Einsteiger und die "advanced" f
 ## Zur Programmierung:
 
 ### Beschaffen und Installieren aller benötigten Bibliotheken
+Ich gehe davon aus, das du bereits die Arduino IDE installiert hast, wenn nicht findest du sie hier: https://www.arduino.cc/en/software
 
 1.   Installation des ESP8266 Moduls für Arduino https://github.com/esp8266/Arduino hier haben wir die "Installing with Boards Manager" Option gewählt. Nicht vergessend anschließend als Board den Wemos D1 R2&Mini auswählen
 
