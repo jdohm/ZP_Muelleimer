@@ -179,6 +179,7 @@ Mit:
 #+BEGIN_SRC c++
   LEDStreifen.begin();
 #+END_SRC
+
 teilen wir ihm mit, das er am Anfang den LED Streifen aktivieren soll.
 Mit 
 #+ATTR_REVEAL: :code_attribs data-line-numbers='1|3'
@@ -186,7 +187,8 @@ Mit
   LEDStreifen.setPixelColor(1, LEDStreifen.Color(0,0,20));
 #+END_SRC
 Können wir ihm sagen, das er die erste LED blau machen soll.
-Um das ergebnis zu sehen müssen wir jetzt noch mit
+#+REVEAL: split
+Um das Ergebnis zu sehen müssen wir jetzt noch mit
 #+ATTR_REVEAL: :code_attribs data-line-numbers='1|3'
 #+BEGIN_SRC c++
   LEDStreifen.show();
@@ -218,13 +220,55 @@ Anschließend können wir uns mit
 #+END_SRC
 Nachrichten schicken, die Version mit ln am Ende schickt zusätzlich zu der Nachricht, die Information,
 dass die Zeile fertig ist. Beide funktionen senden uns aber eine Nachricht.
+#+REVEAL: split
+Schreiben wir 
 #+BEGIN_SRC c++
   Serial.println("Hallo Jannis");
 #+END_SRC
-Führt dazu, das der Arduino mich jetzt immer begrüßt, wenn er startet.
+in den setup Bereich, grüßt uns der Arduino bei jedem Start.
+
 *** WiFi (W-Lan)
-Gehemeine Datei *secret.h*
+Unser W-Lan Passwort ist geheim, deswegen zeige ich euch einen Trick, wie wir es verstecken können.
+Dazu nutzen wir eine gehemeine Datei *secret.h*.
 #+REVEAL: split
+Wir erstellen eine neue Datei. Das geht gut mit dem Editor (oder einem anderen Texteditor, wie z.B. gedit).
+Diese Datei werden wir später in unser Projekt einbinden, deswegen tun wir sie in den gleichen Ordner.
+
+Wir schreiben in diese Datei den folgenden Inhalt:
+
+#+BEGIN_SRC c++
+#define ssid	"Name_eures_Wlans"
+#define pass	"euer_Passwort"
+#+END_SRC
+und speichern die Datei unter "secret.h"
+#+REVEAL: split
+
+Die Datei können wir jetzt im Hauptprogram einbinden.
+Dazu schreiben wir oben unter
+
+#+BEGIN_SRC c++
+#include <Adafruit_NeoPixel.h>
+#+END_SRC
+
+noch
+
+#+BEGIN_SRC c++
+#include "secrets.h"
+#+END_SRC
+
+#+REVEAL: split
+
+mit
+#+BEGIN_SRC c++
+ Serial.println(ssid);
+#+END_SRC
+können wir uns jetzt ausgeben lassen, wie unser W-Lan heißt. Wenn das Klappt kennt der Arduino jetzt also den Namen unseres W-Lans.
+
+#+REVEAL: split
+
+Der nächste Schritt ist die Verbindung zum W-Lan.
+Dazu nutzen wir die folgende Funktion:
+
 verbinden... (mit Serial)
 *** NTP (Zeiten aus dem Netz)
 Zeit empfangen
