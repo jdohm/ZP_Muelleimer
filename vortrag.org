@@ -91,10 +91,10 @@ Für den weiteren ablauf, brauche ich folgende Daten:
    
 * Maker online Kurs II
 #+Title: Maker online Kurs II
-#+Author: Jannis Dohm
+# #+Author: Jannis Dohm
 #+Email: Dohm@posteo.net
 #+OPTIONS: num:nil
-# #+OPTIONS: toc:nil
+#+OPTIONS: toc:nil
 #+OPTIONS: toc_depth = 2,
 #+REVEAL_HLEVEL: 1
 #+OPTIONS: reveal_single_file:t
@@ -119,30 +119,52 @@ Für den weiteren ablauf, brauche ich folgende Daten:
      # 2. Block - Optional - Fragen und Antworten, wenn jemand noch Probleme hat
         # oder noch selbst weiter macht.
 
-** Übersicht
-   Grafik einfügen
-
-** Arduino vorbereiten
+** 
+   :PROPERTIES:
+   :reveal_background_size: 1000px
+   :reveal_background: ./vortrag/programming.svg
+   :END:
+** 
+   :PROPERTIES:
+   :reveal_background_size: 1000px
+   :reveal_background: ./vortrag/working.svg
+   :END:
+** 
    :PROPERTIES:
    :reveal_extra_attr: data-background-iframe="https://www.arduino.cc/en/software"
    :END:
+# Arduino vorbereiten
 *** ESP8266 Modul
-    Installation in Arduino https://github.com/esp8266/Arduino wir nutzen "Installing with Boards Manager" 
+    Neuen Boardverwalter einfügen:
+
+    *Datei* -> *Voreinstellungen*
+
+    unter *Zusätzliche Boarverwalter-URLs*: den folgenden Link einfügen:
+
+    https://arduino.esp8266.com/stable/package_esp8266com_index.json
 *** LED Treiber
-    Um die intelligenten LED's anzusprechen benötigen wir noch die Bibliothek "Neopixel" von Adafruit.
-    Diese bekommen wir, in dem wir *Sketch* -> *Bibliotheken einbinden* -> *Bibliotheken verwalten...*
-    gehen und dort in die Suchleiste *NeoPixel strip* suchen.
-    Anschließend können wir die Bibliothek Adafruit NeoPixel installieren.
-*** ICSParser
-    Wir laden uns die Bibliothek ICSParser runter, die Thomas und ich für euch geschrieben haben.
-    Mit dieser können wir später den Kalender eurer Stadt lesen.
+    Bibliothek "Neopixel" von Adafruit.
+    
+    *Werkzeug* -> *Bibliotheken verwalten...*
+    
+    Suche nach *NeoPixel strip*.
+    
+    Adafruit NeoPixel installieren.
+*** ICSParser - Kalender lesen
     https://github.com/jdohm/ICSParser
-    Wir brauchen die Datein "ICSParser.cpp" und "ICSParser.h", die wir beide später in unseren Programordner kopieren.
+    
+    Wir brauchen die Datein "ICSParser.cpp" und "ICSParser.h"
+
+    Beide müssen in unseren Programordner kopiert werden.
+#+REVEAL: split
+    Wir speichern den Skatch unter Eigene Datein *Muelleimer*.
+
+    Die IDE legt einen Ordner mit dem gleichen Namen an.
+
+    ICSParser.cpp und ICSParser.h unter Muelleimer speichern.
 ** Programmierung
    in diesem Abschnitt beginnen wir mit der Programmierung eurer Arduinos.
    Wir schauen wie weit wir kommen, wir haben noch einen Termin um mit allem fertig zu werden!
-
-   Wir öffnen ein neues Arduino Fenster
 *** LED Programmieren
 über *Sketch* -> *Bibliotheken einbinden* ganz nach unten scrollen und *Adafruit NeoPixel*
    fügen wir unserem Projekt die Bibliothek zur Ansteuerung des LED-Streifens hinzu.
@@ -173,7 +195,8 @@ schreiben.
 #+REVEAL: split
 Jetzt sagen wir dem Arduino was er am start machen soll.
 Dazu schreiben wir in den Bereich *setup*, zwischen die geschweiften Klammern.
-Alle Befehle in diesem Bereich werden bei Setup, also dem Start einmal ausgeführt.
+Alle Befehle in diesem Bereich werden beim Setup, also dem Start einmal ausgeführt.
+#+REVEAL: split
 Mit:
 #+ATTR_REVEAL: :code_attribs data-line-numbers='1|3'
 #+BEGIN_SRC c++
@@ -194,6 +217,8 @@ Um das Ergebnis zu sehen müssen wir jetzt noch mit
   LEDStreifen.show();
 #+END_SRC
 mitteilen, das wir den aktuellen Stand sehen möchten.
+#+REVEAL: split
+Kompilieren und hochladen
 #+REVEAL: split
 Klappt es bei allen?
 Welche LED leuchtet? Habt ihr eine Idee warum?
@@ -223,9 +248,18 @@ dass die Zeile fertig ist. Beide funktionen senden uns aber eine Nachricht.
 #+REVEAL: split
 Schreiben wir 
 #+BEGIN_SRC c++
+  //Leere Zeile um von start abzugrenzen
+  Serial.println("");
+  //Begrüßung
   Serial.println("Hallo Jannis");
 #+END_SRC
 in den setup Bereich, grüßt uns der Arduino bei jedem Start.
+#+REVEAL: split
+Nachrichten vom Arduino sehen wir im Seriellen Monitor
+
+*Werkzeuge* -> *Seriellen Monitor*
+
+Bei dem müssen wir die gleiche Geschwindigkeit einstellen wie im Program.
 
 *** WiFi (W-Lan)
 Unser W-Lan Passwort ist geheim, deswegen zeige ich euch einen Trick, wie wir es verstecken können.
@@ -237,8 +271,8 @@ Diese Datei werden wir später in unser Projekt einbinden, deswegen tun wir sie 
 Wir schreiben in diese Datei den folgenden Inhalt:
 
 #+BEGIN_SRC c++
-#define ssid	"Name_eures_Wlans"
-#define pass	"euer_Passwort"
+#define WlanName	"Name_eures_Wlans"
+#define WlanPasswort	"euer_Passwort"
 #+END_SRC
 und speichern die Datei unter "secret.h"
 #+REVEAL: split
@@ -260,12 +294,31 @@ noch
 
 mit
 #+BEGIN_SRC c++
- Serial.println(ssid);
+ Serial.println(WlanName);
 #+END_SRC
 können wir uns jetzt ausgeben lassen, wie unser W-Lan heißt. Wenn das Klappt kennt der Arduino jetzt also den Namen unseres W-Lans.
 
 #+REVEAL: split
 
+Verbindung zum WLAN
+
+Bibliothek einfügen *Sketch* -> *Bibliothek einfügen* -> *ESP8266WiFi*
+
+#+REVEAL: split
+#+BEGIN_SRC c++
+  WiFi.begin(ssid,pass);
+  Serial.print("checking wifi ");
+  while (WiFi.status() != WL_CONNECTED)
+  {
+    Serial.print(".");
+    delay(500);
+  }
+#+END_SRC
+    
+  Serial.print("\nConnected, IP address: ");
+  Serial.println(WiFi.localIP());
+
+  
 Der nächste Schritt ist die Verbindung zum W-Lan.
 Dazu nutzen wir die folgende Funktion:
 

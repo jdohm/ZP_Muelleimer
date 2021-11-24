@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <title>Maker online Kurs II</title>
-<meta name="author" content="Jannis Dohm Jannis Dohm"/>
+<meta name="author" content="Jannis Dohm"/>
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
@@ -315,49 +315,18 @@ section.has-light-background, section.has-light-background h1, section.has-light
     background-color: #191919; } }
 
 </style>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h1 class="title">Maker online Kurs II</h1><h2 class="author">Jannis Dohm Jannis Dohm</h2><p class="date">Created: 2021-11-21 So 21:58</p>
-</section>
-<section id="table-of-contents-section">
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#/slide-org6ac4467">Ziel / Inhalt des Kurses</a></li>
-<li><a href="#/slide-org2455729">Heutiges Ziel</a></li>
-<li><a href="#/slide-orga2a882a">Übersicht</a></li>
-<li><a href="#/slide-org03baa3d">Arduino vorbereiten</a>
-<ul>
-<li><a href="#/slide-org5c5ed8a">ESP8266 Modul</a></li>
-<li><a href="#/slide-org92341b9">LED Treiber</a></li>
-<li><a href="#/slide-orgfacfed7">ICSParser</a></li>
-</ul>
-</li>
-<li><a href="#/slide-org5acdd2e">Programmierung</a>
-<ul>
-<li><a href="#/slide-orgb841e5e">LED Programmieren</a></li>
-<li><a href="#/slide-orge253404">Serial Programmieren</a></li>
-<li><a href="#/slide-org12dae3a">WiFi (W-Lan)</a></li>
-<li><a href="#/slide-orgcbf175d">NTP (Zeiten aus dem Netz)</a></li>
-<li><a href="#/slide-orgfcf3d78">LittleFS</a></li>
-<li><a href="#/slide-org1abfff8">ICSParser</a></li>
-<li><a href="#/slide-org5940dc3">Custom</a></li>
-<li><a href="#/slide-orgece6821">Zusammenführen</a></li>
-<li><a href="#/slide-org642d05f">Danke</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
+<h1 class="title">Maker online Kurs II</h1><h2 class="author">Jannis Dohm</h2><p class="date">Created: 2021-11-24 Mi 22:36</p>
 </section>
 
 <section>
-<section id="slide-org6ac4467">
-<h2 id="org6ac4467">Ziel / Inhalt des Kurses</h2>
+<section id="slide-org19fc407">
+<h2 id="org19fc407">Ziel / Inhalt des Kurses</h2>
 <ul>
 <li><i>Erstellung der Hardware (4.11)</i></li>
 <li><b><b>Zusammenbau und Programmierung (25.11)</b></b></li>
@@ -368,8 +337,8 @@ section.has-light-background, section.has-light-background h1, section.has-light
 </section>
 </section>
 <section>
-<section id="slide-org2455729">
-<h2 id="org2455729">Heutiges Ziel</h2>
+<section id="slide-orgeb29653">
+<h2 id="orgeb29653">Heutiges Ziel</h2>
 <ul>
 <li>Alle haben Arduino installiert</li>
 <li>Alle können die LED's ändern und haben die Bibliotheken installiert</li>
@@ -379,57 +348,93 @@ section.has-light-background, section.has-light-background h1, section.has-light
 </section>
 </section>
 <section>
-<section id="slide-orga2a882a">
-<h2 id="orga2a882a">Übersicht</h2>
+<section id="slide-org6ac5f6b" data-background="./vortrag/programming.svg" data-background-size="1000px">
+<h2 id="org6ac5f6b"></h2>
+</section>
+</section>
+<section>
+<section id="slide-org56939ef" data-background="./vortrag/working.svg" data-background-size="1000px">
+<h2 id="org56939ef"></h2>
+</section>
+</section>
+<section>
+<section id="slide-org6071bf8" data-background-iframe="https://www.arduino.cc/en/software">
+<h2 id="org6071bf8"></h2>
+</section>
+<section id="slide-org8c802eb">
+<h3 id="org8c802eb">ESP8266 Modul</h3>
 <p>
-Grafik einfügen
+Neuen Boardverwalter einfügen:
 </p>
 
-</section>
-</section>
-<section>
-<section id="slide-org03baa3d" data-background-iframe="https://www.arduino.cc/en/software">
-<h2 id="org03baa3d">Arduino vorbereiten</h2>
-</section>
-<section id="slide-org5c5ed8a">
-<h3 id="org5c5ed8a">ESP8266 Modul</h3>
 <p>
-Installation in Arduino <a href="https://github.com/esp8266/Arduino">https://github.com/esp8266/Arduino</a> wir nutzen "Installing with Boards Manager" 
+<b>Datei</b> -&gt; <b>Voreinstellungen</b>
+</p>
+
+<p>
+unter <b>Zusätzliche Boarverwalter-URLs</b>: den folgenden Link einfügen:
+</p>
+
+<p>
+<a href="https://arduino.esp8266.com/stable/package_esp8266com_index.json">https://arduino.esp8266.com/stable/package_esp8266com_index.json</a>
 </p>
 </section>
-<section id="slide-org92341b9">
-<h3 id="org92341b9">LED Treiber</h3>
+<section id="slide-orge870dbe">
+<h3 id="orge870dbe">LED Treiber</h3>
 <p>
-Um die intelligenten LED's anzusprechen benötigen wir noch die Bibliothek "Neopixel" von Adafruit.
-Diese bekommen wir, in dem wir <b>Sketch</b> -&gt; <b>Bibliotheken einbinden</b> -&gt; <b>Bibliotheken verwalten&#x2026;</b>
-gehen und dort in die Suchleiste <b>NeoPixel strip</b> suchen.
-Anschließend können wir die Bibliothek Adafruit NeoPixel installieren.
+Bibliothek "Neopixel" von Adafruit.
+</p>
+
+<p>
+<b>Werkzeug</b> -&gt; <b>Bibliotheken verwalten&#x2026;</b>
+</p>
+
+<p>
+Suche nach <b>NeoPixel strip</b>.
+</p>
+
+<p>
+Adafruit NeoPixel installieren.
 </p>
 </section>
-<section id="slide-orgfacfed7">
-<h3 id="orgfacfed7">ICSParser</h3>
+<section id="slide-orgf5c5ec4">
+<h3 id="orgf5c5ec4">ICSParser - Kalender lesen</h3>
 <p>
-Wir laden uns die Bibliothek ICSParser runter, die Thomas und ich für euch geschrieben haben.
-Mit dieser können wir später den Kalender eurer Stadt lesen.
 <a href="https://github.com/jdohm/ICSParser">https://github.com/jdohm/ICSParser</a>
-Wir brauchen die Datein "ICSParser.cpp" und "ICSParser.h", die wir beide später in unseren Programordner kopieren.
+</p>
+
+<p>
+Wir brauchen die Datein "ICSParser.cpp" und "ICSParser.h"
+</p>
+
+<p>
+Beide müssen in unseren Programordner kopiert werden.
+</p>
+</section>
+<section>
+<p>
+Wir speichern den Skatch unter Eigene Datein <b>Muelleimer</b>.
+</p>
+
+<p>
+Die IDE legt einen Ordner mit dem gleichen Namen an.
+</p>
+
+<p>
+ICSParser.cpp und ICSParser.h unter Muelleimer speichern.
 </p>
 </section>
 </section>
 <section>
-<section id="slide-org5acdd2e">
-<h2 id="org5acdd2e">Programmierung</h2>
+<section id="slide-orgf8a3dd3">
+<h2 id="orgf8a3dd3">Programmierung</h2>
 <p>
 in diesem Abschnitt beginnen wir mit der Programmierung eurer Arduinos.
 Wir schauen wie weit wir kommen, wir haben noch einen Termin um mit allem fertig zu werden!
 </p>
-
-<p>
-Wir öffnen ein neues Arduino Fenster
-</p>
 </section>
-<section id="slide-orgb841e5e">
-<h3 id="orgb841e5e">LED Programmieren</h3>
+<section id="slide-org9e21ffd">
+<h3 id="org9e21ffd">LED Programmieren</h3>
 <p>
 über <b>Sketch</b> -&gt; <b>Bibliotheken einbinden</b> ganz nach unten scrollen und <b>Adafruit NeoPixel</b>
    fügen wir unserem Projekt die Bibliothek zur Ansteuerung des LED-Streifens hinzu.
@@ -473,7 +478,11 @@ schreiben.
 <p>
 Jetzt sagen wir dem Arduino was er am start machen soll.
 Dazu schreiben wir in den Bereich <b>setup</b>, zwischen die geschweiften Klammern.
-Alle Befehle in diesem Bereich werden bei Setup, also dem Start einmal ausgeführt.
+Alle Befehle in diesem Bereich werden beim Setup, also dem Start einmal ausgeführt.
+</p>
+</section>
+<section>
+<p>
 Mit:
 </p>
 <div class="org-src-container">
@@ -481,6 +490,7 @@ Mit:
 <pre class="src src-c++">LEDStreifen.begin<span style="color: #4f97d7;">()</span>;
 </pre>
 </div>
+
 <p>
 teilen wir ihm mit, das er am Anfang den LED Streifen aktivieren soll.
 Mit 
@@ -492,7 +502,11 @@ Mit
 </div>
 <p>
 Können wir ihm sagen, das er die erste LED blau machen soll.
-Um das ergebnis zu sehen müssen wir jetzt noch mit
+</p>
+</section>
+<section>
+<p>
+Um das Ergebnis zu sehen müssen wir jetzt noch mit
 </p>
 <div class="org-src-container">
 
@@ -505,12 +519,17 @@ mitteilen, das wir den aktuellen Stand sehen möchten.
 </section>
 <section>
 <p>
+Kompilieren und hochladen
+</p>
+</section>
+<section>
+<p>
 Klappt es bei allen?
 Welche LED leuchtet? Habt ihr eine Idee warum?
 </p>
 </section>
-<section id="slide-orge253404">
-<h3 id="orge253404">Serial Programmieren</h3>
+<section id="slide-org43f63c3">
+<h3 id="org43f63c3">Serial Programmieren</h3>
 <p>
 Beim Programmieren schleichen sich schnell Fehler ein, die schwer zu finden sind.
 Deswegen gibt es einen Trick, wie wir uns Nachrichten vom Arduino senden lassen können.
@@ -551,28 +570,144 @@ Anschließend können wir uns mit
 Nachrichten schicken, die Version mit ln am Ende schickt zusätzlich zu der Nachricht, die Information,
 dass die Zeile fertig ist. Beide funktionen senden uns aber eine Nachricht.
 </p>
+</section>
+<section>
+<p>
+Schreiben wir 
+</p>
 <div class="org-src-container">
 
-<pre class="src src-c++">Serial.println<span style="color: #4f97d7;">(</span><span style="color: #2d9574;">"Hallo Jannis"</span><span style="color: #4f97d7;">)</span>;
+<pre class="src src-c++"><span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">Leere Zeile um von start abzugrenzen</span>
+Serial.println<span style="color: #4f97d7;">(</span><span style="color: #2d9574;">""</span><span style="color: #4f97d7;">)</span>;
+<span style="color: #2aa1ae; background-color: #292e34;">//</span><span style="color: #2aa1ae; background-color: #292e34;">Begr&#252;&#223;ung</span>
+Serial.println<span style="color: #4f97d7;">(</span><span style="color: #2d9574;">"Hallo Jannis"</span><span style="color: #4f97d7;">)</span>;
 </pre>
 </div>
 <p>
-Führt dazu, das der Arduino mich jetzt immer begrüßt, wenn er startet.
-</p>
-</section>
-<section id="slide-org12dae3a">
-<h3 id="org12dae3a">WiFi (W-Lan)</h3>
-<p>
-Gehemeine Datei <b>secret.h</b>
+in den setup Bereich, grüßt uns der Arduino bei jedem Start.
 </p>
 </section>
 <section>
 <p>
+Nachrichten vom Arduino sehen wir im Seriellen Monitor
+</p>
+
+<p>
+<b>Werkzeuge</b> -&gt; <b>Seriellen Monitor</b>
+</p>
+
+<p>
+Bei dem müssen wir die gleiche Geschwindigkeit einstellen wie im Program.
+</p>
+
+</section>
+<section id="slide-org531ff9f">
+<h3 id="org531ff9f">WiFi (W-Lan)</h3>
+<p>
+Unser W-Lan Passwort ist geheim, deswegen zeige ich euch einen Trick, wie wir es verstecken können.
+Dazu nutzen wir eine gehemeine Datei <b>secret.h</b>.
+</p>
+</section>
+<section>
+<p>
+Wir erstellen eine neue Datei. Das geht gut mit dem Editor (oder einem anderen Texteditor, wie z.B. gedit).
+Diese Datei werden wir später in unser Projekt einbinden, deswegen tun wir sie in den gleichen Ordner.
+</p>
+
+<p>
+Wir schreiben in diese Datei den folgenden Inhalt:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c++"><span style="color: #bc6ec5;">#define</span> <span style="color: #7590db;">WlanName</span>  <span style="color: #2d9574;">"Name_eures_Wlans"</span>
+<span style="color: #bc6ec5;">#define</span> <span style="color: #7590db;">WlanPasswort</span>  <span style="color: #2d9574;">"euer_Passwort"</span>
+</pre>
+</div>
+<p>
+und speichern die Datei unter "secret.h"
+</p>
+</section>
+<section>
+
+<p>
+Die Datei können wir jetzt im Hauptprogram einbinden.
+Dazu schreiben wir oben unter
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c++"><span style="color: #bc6ec5;">#include</span> <span style="color: #4f97d7;">&lt;</span><span style="color: #2d9574;">Adafruit_NeoPixel.h</span><span style="color: #4f97d7;">&gt;</span>
+</pre>
+</div>
+
+<p>
+noch
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c++"><span style="color: #bc6ec5;">#include</span> <span style="color: #2d9574;">"secrets.h"</span>
+</pre>
+</div>
+
+</section>
+<section>
+
+<p>
+mit
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c++">Serial.println<span style="color: #4f97d7;">(</span>WlanName<span style="color: #4f97d7;">)</span>;
+</pre>
+</div>
+<p>
+können wir uns jetzt ausgeben lassen, wie unser W-Lan heißt. Wenn das Klappt kennt der Arduino jetzt also den Namen unseres W-Lans.
+</p>
+
+</section>
+<section>
+
+<p>
+Verbindung zum WLAN
+</p>
+
+<p>
+Bibliothek einfügen <b>Sketch</b> -&gt; <b>Bibliothek einfügen</b> -&gt; <b>ESP8266WiFi</b>
+</p>
+
+</section>
+<section>
+<div class="org-src-container">
+
+<pre class="src src-c++">WiFi.begin<span style="color: #4f97d7;">(</span>ssid,pass<span style="color: #4f97d7;">)</span>;
+Serial.print<span style="color: #4f97d7;">(</span><span style="color: #2d9574;">"checking wifi "</span><span style="color: #4f97d7;">)</span>;
+<span style="color: #4f97d7; font-weight: bold;">while</span> <span style="color: #4f97d7;">(</span>WiFi.status<span style="color: #bc6ec5;">()</span> != WL_CONNECTED<span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">{</span>
+  Serial.print<span style="color: #bc6ec5;">(</span><span style="color: #2d9574;">"."</span><span style="color: #bc6ec5;">)</span>;
+  delay<span style="color: #bc6ec5;">(</span><span style="color: #a45bad;">500</span><span style="color: #bc6ec5;">)</span>;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+
+<p>
+Serial.print("\nConnected, IP address: ");
+Serial.println(WiFi.localIP());
+</p>
+
+
+<p>
+Der nächste Schritt ist die Verbindung zum W-Lan.
+Dazu nutzen wir die folgende Funktion:
+</p>
+
+<p>
 verbinden&#x2026; (mit Serial)
 </p>
 </section>
-<section id="slide-orgcbf175d">
-<h3 id="orgcbf175d">NTP (Zeiten aus dem Netz)</h3>
+<section id="slide-org933978e">
+<h3 id="org933978e">NTP (Zeiten aus dem Netz)</h3>
 <p>
 Zeit empfangen
 </p>
@@ -585,20 +720,20 @@ Umrechnen
 Ausgeben
 </p>
 </section>
-<section id="slide-orgfcf3d78">
-<h3 id="orgfcf3d78">LittleFS</h3>
+<section id="slide-orgf992007">
+<h3 id="orgf992007">LittleFS</h3>
 </section>
-<section id="slide-org1abfff8">
-<h3 id="org1abfff8">ICSParser</h3>
+<section id="slide-org6358a24">
+<h3 id="org6358a24">ICSParser</h3>
 </section>
-<section id="slide-org5940dc3">
-<h3 id="org5940dc3">Custom</h3>
+<section id="slide-org86ba4fd">
+<h3 id="org86ba4fd">Custom</h3>
 </section>
-<section id="slide-orgece6821">
-<h3 id="orgece6821">Zusammenführen</h3>
+<section id="slide-org11c65d1">
+<h3 id="org11c65d1">Zusammenführen</h3>
 </section>
-<section id="slide-org642d05f">
-<h3 id="org642d05f">Danke</h3>
+<section id="slide-org8308151">
+<h3 id="org8308151">Danke</h3>
 </section>
 </section>
 </div>
