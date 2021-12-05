@@ -28,7 +28,7 @@
 #+OPTIONS: toc_depth = 2,
 #+REVEAL_HLEVEL: 1
 #+OPTIONS: reveal_single_file:t
-#+EXPORT_FILE_NAME: ZP_Crypto_Vortrag.html
+# +EXPORT_FILE_NAME: Maker_online_I_Vortrag.html
 
 ** Herzlich Willkommen!
    
@@ -98,7 +98,7 @@ Für den weiteren ablauf, brauche ich folgende Daten:
 #+OPTIONS: toc_depth = 2,
 #+REVEAL_HLEVEL: 1
 #+OPTIONS: reveal_single_file:t
-#+EXPORT_FILE_NAME: ZP_Crypto_Vortrag_II.html
+# +EXPORT_FILE_NAME: Maker_online_II_Vortrag.html
 
 ** Ziel / Inhalt des Kurses
 - /Erstellung der Hardware (4.11)/
@@ -134,6 +134,10 @@ Für den weiteren ablauf, brauche ich folgende Daten:
    :reveal_extra_attr: data-background-iframe="https://www.arduino.cc/en/software"
    :END:
 # Arduino vorbereiten
+*** Windows Only - Wemos D1 Treiber installieren
+    Unter Windows wird ein Treiber benötigt um den WeMos D1 Mini anzusprechen. Diese findet ihr hier:
+    [[https://www.wemos.cc/en/latest/ch340_driver.html]]
+    Herunterladen und installieren, dann solltet ihr über die Arduino IDE mit dem Mikrocomputer sprechen können.
 *** ESP8266 Modul
     Neuen Boardverwalter einfügen:
 
@@ -261,12 +265,114 @@ Nachrichten vom Arduino sehen wir im Seriellen Monitor
 
 Bei dem müssen wir die gleiche Geschwindigkeit einstellen wie im Program.
 
-*** WiFi (W-Lan)
-Unser W-Lan Passwort ist geheim, deswegen zeige ich euch einen Trick, wie wir es verstecken können.
+# *** WiFi (W-Lan)
+#Unser W-Lan Passwort ist geheim, deswegen zeige ich euch einen Trick, wie wir es verstecken können.
+#Dazu nutzen wir eine gehemeine Datei *secret.h*.
+##+REVEAL: split
+#Wir erstellen eine neue Datei. Das geht gut mit dem Editor (oder einem anderen Texteditor, wie z.B. gedit).
+#Diese Datei werden wir später in unser Projekt einbinden, deswegen tun wir sie in den gleichen Ordner.
+#
+#Wir schreiben in diese Datei den folgenden Inhalt:
+#
+##+BEGIN_SRC c++
+##define WlanName	"Name_eures_Wlans"
+##define WlanPasswort	"euer_Passwort"
+##+END_SRC
+#und speichern die Datei unter "secret.h"
+##+REVEAL: split
+#
+#Die Datei können wir jetzt im Hauptprogram einbinden.
+#Dazu schreiben wir oben unter
+#
+##+BEGIN_SRC c++
+##include <Adafruit_NeoPixel.h>
+##+END_SRC
+#
+#noch
+#
+##+BEGIN_SRC c++
+##include "secrets.h"
+##+END_SRC
+#
+##+REVEAL: split
+#
+#mit
+##+BEGIN_SRC c++
+ #Serial.println(WlanName);
+##+END_SRC
+#können wir uns jetzt ausgeben lassen, wie unser W-Lan heißt. Wenn das Klappt kennt der Arduino jetzt also den Namen unseres W-Lans.
+#
+##+REVEAL: split
+#
+#Verbindung zum WLAN
+#
+#Bibliothek einfügen *Sketch* -> *Bibliothek einfügen* -> *ESP8266WiFi*
+#
+##+REVEAL: split
+##+BEGIN_SRC c++
+  #WiFi.begin(WlanName,WlanPasswort);
+  #Serial.print("Verbinden mit Wlan ");
+  #while (WiFi.status() != WL_CONNECTED)
+  #{
+    #Serial.print(".");
+    #delay(500);
+  #}
+##+END_SRC
+    #
+  #Serial.print("\nVerbunden, IP Addresse: ");
+  #Serial.println(WiFi.localIP());
+#
+  #
+#Der nächste Schritt ist die Verbindung zum W-Lan.
+#Dazu nutzen wir die folgende Funktion:
+#
+#verbinden... (mit Serial)                                                             
+# *** NTP (Zeiten aus dem Netz)
+#Zeit empfangen
+#
+#Umrechnen
+#
+#Ausgeben     
+# *** LittleFS
+# *** ICSParser
+# *** Custom
+# *** Zusammenführen
+*** Danke
+
+
+* Maker online Kurs III
+#+Title: Maker online Kurs III
+# #+Author: Jannis Dohm
+#+Email: Dohm@posteo.net
+#+OPTIONS: num:nil
+#+OPTIONS: toc:nil
+#+OPTIONS: toc_depth = 2,
+#+REVEAL_HLEVEL: 1
+#+OPTIONS: reveal_single_file:t
+#+EXPORT_FILE_NAME: Maker_online_III_Vortrag.html
+
+** Ziel / Inhalt des Kurses
+- /Erstellung der Hardware (4.11)/
+- /Zusammenbau und Programmierung (25.11)/
+- **Hilfe, Customization, Fragen / Reserve (16.12)**
+  
+** Heutiges Ziel
+- Alle können sich mit WLAN verbinden
+- Alle haben die aktuelle Zeit auf Wemos D1 mini
+- Alle haben den Kalender auf dem Wemos
+- Bei allen leuchtet eine LED wenn der Müll raus muss
+  
+** Programmierung
+   in diesem Abschnitt beginnen wir mit der Programmierung eurer Arduinos.
+   Wir schauen wie weit wir kommen, wir haben noch einen Termin um mit allem fertig zu werden!
+*** WiFi (WLAN)
+Unser WLAN Passwort ist geheim, deswegen zeige ich euch einen Trick, wie wir es verstecken können.
 Dazu nutzen wir eine gehemeine Datei *secret.h*.
 #+REVEAL: split
-Wir erstellen eine neue Datei. Das geht gut mit dem Editor (oder einem anderen Texteditor, wie z.B. gedit).
-Diese Datei werden wir später in unser Projekt einbinden, deswegen tun wir sie in den gleichen Ordner.
+Wir erstellen eine neue Datei. Das geht in der Arduino IDE in dem wir oben rechts auf den Pfeil nach unten klicken und *neue Datei* wählen.
+
+Als Name wählen wir *secret.h* 
+Die Datei wird automatisch im gleichen Ordner gespeichert, sodass wir sie im Programm nutzen können. 
 
 Wir schreiben in diese Datei den folgenden Inhalt:
 
@@ -274,7 +380,7 @@ Wir schreiben in diese Datei den folgenden Inhalt:
 #define WlanName	"Name_eures_Wlans"
 #define WlanPasswort	"euer_Passwort"
 #+END_SRC
-und speichern die Datei unter "secret.h"
+und speichern.
 #+REVEAL: split
 
 Die Datei können wir jetzt im Hauptprogram einbinden.
@@ -294,6 +400,7 @@ noch
 
 mit
 #+BEGIN_SRC c++
+ Serial.print("mein WLAN heißt: ");
  Serial.println(WlanName);
 #+END_SRC
 können wir uns jetzt ausgeben lassen, wie unser W-Lan heißt. Wenn das Klappt kennt der Arduino jetzt also den Namen unseres W-Lans.
@@ -305,33 +412,109 @@ Verbindung zum WLAN
 Bibliothek einfügen *Sketch* -> *Bibliothek einfügen* -> *ESP8266WiFi*
 
 #+REVEAL: split
+Der nächste Schritt ist die Verbindung zum W-Lan.
+Dazu nutzen wir die folgende Funktion:
 #+BEGIN_SRC c++
-  WiFi.begin(ssid,pass);
-  Serial.print("checking wifi ");
+  WiFi.begin(WlanName,WlanPasswort);
+  Serial.print("Verbinden mit Wlan ");
   while (WiFi.status() != WL_CONNECTED)
   {
     Serial.print(".");
     delay(500);
   }
-#+END_SRC
     
-  Serial.print("\nConnected, IP address: ");
+  Serial.print("\nVerbunden, IP Addresse: ");
   Serial.println(WiFi.localIP());
+#+END_SRC
 
-  
-Der nächste Schritt ist die Verbindung zum W-Lan.
-Dazu nutzen wir die folgende Funktion:
+*** NTP Network Time Protocoll (Zeiten aus dem Netz)
+*WiFiUdp.h* und *WiFiUdp.cpp* von hier:
 
-verbinden... (mit Serial)
-*** NTP (Zeiten aus dem Netz)
-Zeit empfangen
+[[https://github.com/arduino-libraries/NTPClient]]
 
-Umrechnen
+herunter laden und in den Ordner Muelleimer speichern.
 
-Ausgeben
+#+REVEAL: split
+
+unnter die anderen includes folgendes einfügen: 
+
+#+BEGIN_SRC c++
+#include "NTPClient.h"
+#+END_SRC
+
+Mit folgendem Code konfigurieren wir, wie wir die Zeit erhalten möchten.
+#+BEGIN_SRC c++
+  // UDP zugang über WLAN
+  WiFiUDP ntpUDP;
+  // Funktion  unsereInstanz
+  //    |          |     Art   , Zeitserver    , Zeitverschiebung zu UTC in Sekunden
+  //    |          |       |              |        | , Abfrage alle 60000 Millisekunden
+    NTPClient timeClient(ntpUDP, "pool.ntp.org", 3600, 60000);
+#+END_SRC
+
+#+REVEAL: split
+Mit folgendem Code im Bereich setup, starten wir unseren timeClient
+#+BEGIN_SRC c++
+timeClient.begin();
+#+END_SRC
+
+und mit folgendem Code teilen wir mit, das die Zeit abgefragt werden soll:
+#+BEGIN_SRC c++
+timeClient.update();
+#+END_SRC
+
+Anschließend können wir mit dem folgenden Code die Uhrzeit ausgeben:
+#+BEGIN_SRC c++
+Serial.println(timeClient.getFormattedTime());
+#+END_SRC
+
+#+REVEAL: split
+Für das Datum gibt es leider keine ganz so einfache Funktion.
+Wir können aber die aktuelle [[https://de.wikipedia.org/wiki/Unixzeit][Unixzeit]] mit
+#+BEGIN_SRC c++
+timeClient.getEpochTime();
+#+END_SRC
+erhalten.
+#+REVEAL: split
+Diese können wir mit einer Zeit Bibliothek dem Arduino mitteilen.
+
+Dazu müssen wir unter *Sketch* -> *Bibliotheken einbinden* -> *Bibliotheken verwalten...*
+nach "Timekeeping functionality" suchen und *Time* by Paul Stoffregen installieren.
+
+Anschließend können wir unter *Sketch* -> *Bibliotheken einbinden* die Time Bibliothek hinzufügen.
+
+#+REVEAL: split
+Mit:
+#+BEGIN_SRC c++
+  //nach dem timeClient.update()
+  setTime(timeClient.getEpochTime());
+#+END_SRC
+können wir die aktuelle Uhrzeit auf dem WeMos setzen.
+
+
+# Timekeeping functionality for Arduino Date and Time functions, with provisions to syncronize to external time sources like GPS and NTP (Internet). This library is often used together with TimeAlarms and DS1307TRC.
+#+REVEAL: split
+Mit folgendem Code können wir uns das aktuelle Datum und die aktuelle Uhrzeit ausgeben lassen:
+
+#+BEGIN_SRC c++
+  Serial.print("Datum: ");
+  Serial.print(day());
+  Serial.print(".");
+  Serial.print(month());
+  Serial.print(".");
+  Serial.println(year());
+  Serial.print("Time: ");
+  Serial.println(timeClient.getFormattedTime());
+#+END_SRC
+
 *** LittleFS
 *** ICSParser
 *** Custom
 *** Zusammenführen
+    
+#+BEGIN_SRC c++
+  //Einen Tag in Sekunden hinzufügen
+  setTime(timeClient.getEpochTime()+86400);
+#+END_SRC
+# muss hier sein, da sonst bei day()+1 aus 31 -> 32 wird, anstelle des nächsten Monats
 *** Danke
-
