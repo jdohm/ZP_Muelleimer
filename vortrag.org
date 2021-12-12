@@ -267,7 +267,7 @@ Bei dem müssen wir die gleiche Geschwindigkeit einstellen wie im Program.
 
 # *** WiFi (W-Lan)
 #Unser W-Lan Passwort ist geheim, deswegen zeige ich euch einen Trick, wie wir es verstecken können.
-#Dazu nutzen wir eine gehemeine Datei *secret.h*.
+#Dazu nutzen wir eine gehemeine Datei *secrets.h*.
 ##+REVEAL: split
 #Wir erstellen eine neue Datei. Das geht gut mit dem Editor (oder einem anderen Texteditor, wie z.B. gedit).
 #Diese Datei werden wir später in unser Projekt einbinden, deswegen tun wir sie in den gleichen Ordner.
@@ -278,7 +278,7 @@ Bei dem müssen wir die gleiche Geschwindigkeit einstellen wie im Program.
 ##define WlanName	"Name_eures_Wlans"
 ##define WlanPasswort	"euer_Passwort"
 ##+END_SRC
-#und speichern die Datei unter "secret.h"
+#und speichern die Datei unter "secrets.h"
 ##+REVEAL: split
 #
 #Die Datei können wir jetzt im Hauptprogram einbinden.
@@ -367,11 +367,11 @@ Bei dem müssen wir die gleiche Geschwindigkeit einstellen wie im Program.
    Wir schauen wie weit wir kommen, wir haben noch einen Termin um mit allem fertig zu werden!
 *** WiFi (WLAN)
 Unser WLAN Passwort ist geheim, deswegen zeige ich euch einen Trick, wie wir es verstecken können.
-Dazu nutzen wir eine gehemeine Datei *secret.h*.
+Dazu nutzen wir eine gehemeine Datei *secrets.h*.
 #+REVEAL: split
 Wir erstellen eine neue Datei. Das geht in der Arduino IDE in dem wir oben rechts auf den Pfeil nach unten klicken und *neue Datei* wählen.
 
-Als Name wählen wir *secret.h* 
+Als Name wählen wir *secrets.h* 
 Die Datei wird automatisch im gleichen Ordner gespeichert, sodass wir sie im Programm nutzen können. 
 
 Wir schreiben in diese Datei den folgenden Inhalt:
@@ -423,7 +423,8 @@ Dazu nutzen wir die folgende Funktion:
     delay(500);
   }
     
-  Serial.print("\nVerbunden, IP Addresse: ");
+  Serial.println();
+  Serial.print("Verbunden, IP Addresse: ");
   Serial.println(WiFi.localIP());
 #+END_SRC
 
@@ -449,7 +450,7 @@ Mit folgendem Code konfigurieren wir, wie wir die Zeit erhalten möchten.
   // Funktion  unsereInstanz
   //    |          |     Art   , Zeitserver    , Zeitverschiebung zu UTC in Sekunden
   //    |          |       |              |        | , Abfrage alle 60000 Millisekunden
-    NTPClient timeClient(ntpUDP, "pool.ntp.org", 3600, 60000);
+  NTPClient timeClient(ntpUDP, "pool.ntp.org", 3600, 60000);
 #+END_SRC
 
 #+REVEAL: split
@@ -507,14 +508,97 @@ Mit folgendem Code können wir uns das aktuelle Datum und die aktuelle Uhrzeit a
   Serial.println(timeClient.getFormattedTime());
 #+END_SRC
 
-*** LittleFS
 *** ICSParser
-*** Custom
-*** Zusammenführen
+Mit dem ICSParser können iCal Kalender ausgelesen werden.
+
+Wir nutzen ihn, um in einer .ICS Datei zu sehen, wann die Müllabfuhr kommt.
+
+Dazu müssen wir die Zip-Datei unter [[https://github.com/jdohm/ICSParser/releases/download/v0.1.0-beta/ICSParserv0.1.0.zip][ICSParserv0.1.0]] herunterladen.
+
+Die zwei Dateien speichern wir in unserem *Muelleimer* Ordner.
+#+REVEAL: split
+Mit dem folgenden Code, am Anfang unseres Programms, können wir die Bibliothek einbinden.
+#+BEGIN_SRC c++
+#include "ICSParser.h"
+#+END_SRC
+#+REVEAL: split
+
+Als nächstes brauchen wir den Kalender.
+
+Diesen müssen wir von unserer Kommune herunterladen
+und die iCal Datei im *Muelleimer* Ordner in einem neuen Ordner namens *data* speichern.
+Der Einfachheit halber benennen wir die Datei um in *Kalender.ics*.
+
+Um diese Datei auf den Arduino zu bekommen installieren wir LittleFS.
+#+REVEAL: split
+Unser Ordner Meulleimer müsste jetzt die folgenden Dateien enthalten:
+#+BEGIN_SRC c++
+  Muelleimer\
+  - Muelleimer.ino
+  - secrets.h
+  - NTPClient.h
+  - NTPClient.cpp
+  - ICSParser.h
+  - ICSParser.cpp
+  - data\
+    - Kalender.ics
+#+END_SRC
     
+*** LittleFS
+Mit LittleFS (kleines Dateisystem) können wir einen Kalender auf dem Arduino speichern.
+
+Zuerst müssen wir dazu den das folgende Zip [[https://github.com/earlephilhower/arduino-esp8266littlefs-plugin/releases/download/2.6.0/ESP8266LittleFS-2.6.0.zip][LittleFS Tool]] unter
+#+BEGIN_SRC c++
+<home_dir>/Arduino/tools/
+#+END_SRC
+entpacken anschließend muss die Arduino IDE neugestartet werden.
+#+REVEAL: split
+Mit *Werkzeuge* -> *ESP8266 Sketch Data Upload*
+
+können anschließend die Daten die wir unter *data* gespeichert haben
+
+auf den Arduino hochgeladen werden.
+
+*** Zusammenführen
+Jetzt können wir alles zusammen bringen. Mit dem folgenden Code im Setup
+#+BEGIN_SRC c++
+ICSParser KalenderLeser("Kalender.ics");
+#+END_SRC
+sagen wir dem ICSParser das wir ihn KalenderLeser nennen und er die Datei Kalender.ics lesen soll.
+#+REVEAL: split
+#+BEGIN_SRC c++
+  //         Was suchen wir?
+  //           |    an welchem Tag?
+  //           |     |  in welchem Monat?
+  //           |     |  |  in welchem Jahr?
+  CheckDate("Grau", 13, 3, 2020);
+#+END_SRC
+fragt anschließend ab, ob an einem gegebenen Tag, ein bestimmtes Event im Kalender eingetragen ist.
+#+REVEAL: split
+Um zu testen, ob es bereits funktioniert, 
+können wir mit die Kalender.ics Datei in einem Texteditor öffnen
+und uns einen Tag raus suchen an dem es einen Eintrag gibt.
+
+Anschließend können wir testen, ob der Kalender den Eintrag auch findet.
+
+#+REVEAL: split
+Dazu nutzen wir folgenden Code:
+#+BEGIN_SRC c++
+  Serial.print("Muss der Müll raus? ");
+  Serial.println(KalenderLeser.CheckDate("Grau", 16, 12, 2021));
+#+END_SRC
+Jetzt sagt der Arduino uns im Serialmonitor mit *1* oder *0* ob er denkt der Müll muss an diesem Tag raus.
+#+REVEAL: split
+Mit einer guten Kombination können wir jetzt automatisch jeden Tag abfragen,
+ ob der Müll am nächsten Tag raus muss.
+ Um nicht immer auf den Serialmonitor angewisen zu sein, können wir auch die LEDs nutzen.
+
+Dazu noch ein Tipp:
 #+BEGIN_SRC c++
   //Einen Tag in Sekunden hinzufügen
   setTime(timeClient.getEpochTime()+86400);
 #+END_SRC
 # muss hier sein, da sonst bei day()+1 aus 31 -> 32 wird, anstelle des nächsten Monats
+*** Viel Erfolg!
+    lasst es uns gemeinsam versuchen
 *** Danke
