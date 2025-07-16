@@ -1,6 +1,6 @@
 # Anleitung einfacher Mülleimer
 
-Hier ekläre ich wie mittels des freien Programms FreeCAD https://www.freecadweb.org/ einen einfachen Mülleimer creirt werden kann.
+Hier ekläre ich wie mittels des freien Programms FreeCAD https://freecad.org einen einfachen Mülleimer creirt werden kann.
 
 1. Wir öffnen ein neues Projekt in FreeCAD, und wechseln in die Part Design Workbench.
     ![Part Design](pics/workbench.png "Part Design") 

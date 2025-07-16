@@ -1,6 +1,6 @@
 # Anleitung gewellter Mülleimer
 
-Hier ekläre ich wie mittels des freien Programms FreeCAD https://www.freecadweb.org/ ein etwas komplizierterer Mülleimer creirt werden kann.
+Hier ekläre ich wie mittels des freien Programms FreeCAD https://freecad.org ein etwas komplizierterer Mülleimer creirt werden kann.
 
 ## Vorläufig: (aktueller Stand in Video (noch nicht veröffentlicht))
 Diese Datei ist aktuell nur enthalten um zu einem Späteren Zeitpunkt angepasst zu werden
