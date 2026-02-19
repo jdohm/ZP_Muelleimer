@@ -58,7 +58,7 @@ Für den weiteren ablauf, brauche ich folgende Daten:
 - Wohnorte (für Versand der Hardware und vorbereitung der Software)
 ** FreeCAD Einrichten
    :PROPERTIES:
-   :reveal_extra_attr: data-background-iframe="https://www.freecadweb.org/"
+   :reveal_extra_attr: data-background-iframe="https://freecad.org"
    :END:
    # :reveal_background: ./vortrag/freecad.png
    # :reveal_extra_attr: data-background-opacity="0.2"
